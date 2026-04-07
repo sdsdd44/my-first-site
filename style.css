@@ -1,0 +1,125 @@
+:root {
+    --glass-bg: rgba(255, 255, 255, 0.06);
+    --glass-border: rgba(255, 255, 255, 0.12);
+    --ios-blue: #007AFF;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Inter', -apple-system, sans-serif;
+}
+
+body {
+    background: #000;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    color: white;
+}
+
+#bg-video {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    min-width: 100%;
+    min-height: 100%;
+    transform: translate(-50%, -50%);
+    z-index: -1;
+    filter: brightness(0.4) contrast(1.1);
+}
+
+/* Эффект Liquid Glass */
+.glass-container {
+    background: var(--glass-bg);
+    backdrop-filter: blur(30px) saturate(180%);
+    -webkit-backdrop-filter: blur(30px) saturate(180%);
+    border: 1px solid var(--glass-border);
+    border-radius: 40px;
+    padding: 50px 30px;
+    width: 90%;
+    max-width: 400px;
+    text-align: center;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+    animation: slideUp 1s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+@keyframes slideUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.avatar-wrapper {
+    margin-bottom: 20px;
+}
+
+.avatar {
+    width: 120px;
+    height: 120px;
+    border-radius: 35px; /* iOS-стиль (squircle) */
+    object-fit: cover;
+    border: 1px solid var(--glass-border);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+}
+
+.nickname {
+    font-size: 28px;
+    font-weight: 600;
+    letter-spacing: -0.5px;
+    margin-bottom: 15px;
+}
+
+.quote {
+    font-size: 14px;
+    color: rgba(255, 255, 255, 0.6);
+    line-height: 1.5;
+    margin-bottom: 35px;
+    font-style: italic;
+    padding: 0 10px;
+}
+
+.button-stack {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.ios-btn {
+    background: rgba(255, 255, 255, 0.08);
+    border: none;
+    padding: 18px;
+    border-radius: 20px;
+    color: white;
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: 500;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    border: 1px solid transparent;
+    display: block;
+}
+
+.ios-btn:hover:not(.disabled) {
+    background: rgba(255, 255, 255, 0.15);
+    border-color: var(--glass-border);
+    transform: scale(1.02);
+}
+
+.ios-btn.disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+}
+
+.footer-info {
+    margin-top: 30px;
+    font-size: 12px;
+    color: rgba(255, 255, 255, 0.3);
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.footer-info:hover {
+    color: rgba(255, 255, 255, 0.8);
+}
