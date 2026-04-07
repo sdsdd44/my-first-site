@@ -1,7 +1,7 @@
 :root {
-    --glass-bg: rgba(255, 255, 255, 0.06);
-    --glass-border: rgba(255, 255, 255, 0.12);
-    --ios-blue: #007AFF;
+    --glass-bg: rgba(255, 255, 255, 0.03);
+    --glass-border: rgba(255, 255, 255, 0.15);
+    --shine-color: rgba(255, 255, 255, 0.2);
 }
 
 * {
@@ -19,6 +19,7 @@ body {
     align-items: center;
     overflow: hidden;
     color: white;
+    perspective: 1000px; /* Для 3D наклона */
 }
 
 #bg-video {
@@ -29,97 +30,127 @@ body {
     min-height: 100%;
     transform: translate(-50%, -50%);
     z-index: -1;
-    filter: brightness(0.4) contrast(1.1);
+    filter: brightness(0.3) contrast(1.2) blur(2px);
 }
 
-/* Эффект Liquid Glass */
 .glass-container {
-    background: var(--glass-bg);
-    backdrop-filter: blur(30px) saturate(180%);
-    -webkit-backdrop-filter: blur(30px) saturate(180%);
+    background: radial-gradient(circle at top left, rgba(255,255,255,0.08), transparent), var(--glass-bg);
+    backdrop-filter: blur(40px) saturate(200%);
+    -webkit-backdrop-filter: blur(40px) saturate(200%);
     border: 1px solid var(--glass-border);
-    border-radius: 40px;
-    padding: 50px 30px;
-    width: 90%;
-    max-width: 400px;
+    border-radius: 50px; /* Еще круглее */
+    padding: 60px 40px;
+    width: 95%;
+    max-width: 420px;
     text-align: center;
-    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
-    animation: slideUp 1s cubic-bezier(0.2, 0.8, 0.2, 1);
-}
-
-@keyframes slideUp {
-    from { opacity: 0; transform: translateY(30px); }
-    to { opacity: 1; transform: translateY(0); }
+    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.4), inset 0 0 20px rgba(255,255,255,0.05);
+    animation: slideUp 1.2s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .avatar-wrapper {
-    margin-bottom: 20px;
+    position: relative;
+    display: inline-block;
+    margin-bottom: 25px;
 }
 
 .avatar {
-    width: 120px;
-    height: 120px;
-    border-radius: 35px; /* iOS-стиль (squircle) */
+    width: 130px;
+    height: 130px;
+    border-radius: 45px; /* iOS Squircle */
     object-fit: cover;
     border: 1px solid var(--glass-border);
-    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+    position: relative;
+    z-index: 2;
+}
+
+.avatar-glow {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 150px;
+    height: 150px;
+    background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+    z-index: 1;
 }
 
 .nickname {
-    font-size: 28px;
+    font-size: 32px;
     font-weight: 600;
-    letter-spacing: -0.5px;
-    margin-bottom: 15px;
+    margin-bottom: 10px;
+    background: linear-gradient(180deg, #fff 0%, rgba(255,255,255,0.5) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
 }
 
 .quote {
     font-size: 14px;
-    color: rgba(255, 255, 255, 0.6);
-    line-height: 1.5;
-    margin-bottom: 35px;
-    font-style: italic;
-    padding: 0 10px;
+    color: rgba(255, 255, 255, 0.5);
+    margin-bottom: 40px;
+    padding: 0 20px;
+    line-height: 1.6;
 }
 
 .button-stack {
     display: flex;
     flex-direction: column;
-    gap: 12px;
+    gap: 15px;
 }
 
-.ios-btn {
-    background: rgba(255, 255, 255, 0.08);
-    border: none;
-    padding: 18px;
-    border-radius: 20px;
+.liquid-btn {
+    position: relative;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 20px;
+    border-radius: 25px;
     color: white;
     text-decoration: none;
-    font-size: 16px;
     font-weight: 500;
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    border: 1px solid transparent;
-    display: block;
+    overflow: hidden;
+    transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
 }
 
-.ios-btn:hover:not(.disabled) {
-    background: rgba(255, 255, 255, 0.15);
-    border-color: var(--glass-border);
-    transform: scale(1.02);
+.liquid-btn:hover:not(.disabled) {
+    background: rgba(255, 255, 255, 0.1);
+    transform: translateY(-3px) scale(1.02);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+    border-color: rgba(255,255,255,0.3);
 }
 
-.ios-btn.disabled {
-    opacity: 0.4;
+/* Эффект блика */
+.btn-shine {
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 50%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
+    transition: 0.5s;
+}
+
+.liquid-btn:hover .btn-shine {
+    left: 150%;
+}
+
+.liquid-btn.disabled {
+    opacity: 0.3;
     cursor: not-allowed;
 }
 
 .footer-info {
-    margin-top: 30px;
-    font-size: 12px;
-    color: rgba(255, 255, 255, 0.3);
+    margin-top: 35px;
+    font-size: 13px;
+    color: rgba(255,255,255,0.2);
+    letter-spacing: 1px;
     cursor: pointer;
     transition: 0.3s;
 }
 
 .footer-info:hover {
-    color: rgba(255, 255, 255, 0.8);
+    color: #fff;
+}
+
+@keyframes slideUp {
+    from { opacity: 0; transform: translateY(50px) rotateX(-10deg); }
+    to { opacity: 1; transform: translateY(0) rotateX(0); }
 }
