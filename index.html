@@ -3,44 +3,115 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Immortal | Profile</title>
+    <title>Immortal | Dimension</title>
     <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
 </head>
 <body>
-
+    <!-- 🌸 Sakura Container -->
+    <div id="sakura-container"></div>
+    
     <video autoplay muted loop playsinline id="bg-video">
         <source src="IMG_1919.MP4" type="video/mp4">
     </video>
 
-    <div class="glass-container">
-        <div class="avatar-wrapper">
-            <img src="avatar.jpg" alt="Immortal" class="avatar">
-            <div class="avatar-glow"></div>
+    <!-- 🍔 Nav with Hamburger -->
+    <nav class="glass-nav">
+        <div class="menu-toggle" id="menu-toggle" role="button" aria-label="Menu">
+            <span></span><span></span><span></span>
         </div>
-        
-        <h1 class="nickname">Immortal</h1>
-        
-        <p class="quote">“When you love someone, you've gotta trust them, there's no other way...”</p>
+        <div class="nav-title">Immortal OS</div>
+    </nav>
 
-        <div class="button-stack">
-            <a href="https://t.me/rivolty" target="_blank" class="liquid-btn">
-                <span class="btn-shine"></span>
-                <span>Telegram</span>
-            </a>
-            <a href="https://steamcommunity.com/profiles/76561199826022883/" target="_blank" class="liquid-btn">
-                <span class="btn-shine"></span>
-                <span>Steam Profile</span>
-            </a>
-            <button class="liquid-btn disabled" disabled>
-                <span>Скоро...</span>
-            </button>
+    <!-- 📱 Side Panel -->
+    <div class="side-panel" id="side-panel">
+        <div class="panel-header">
+            <h3>Quick Access</h3>
+            <button id="close-panel" class="close-btn">&times;</button>
         </div>
-
-        <div class="footer-info" id="discord-copy">
-            Ку!
+        <div class="panel-content">
+            <a href="#bio" class="panel-link">📖 About Me</a>
+            <a href="https://t.me/rivolty" target="_blank" class="panel-link">✈️ Telegram</a>
+            <a href="https://steamcommunity.com/profiles/76561199826022883/" target="_blank" class="panel-link">🎮 Steam</a>
+            <div class="panel-divider"></div>
+            <button id="theme-toggle" class="panel-link">🌓 Toggle Theme</button>
+            <div class="info-block">
+                <h4>Dev Stack</h4>
+                <p>C# Desktop • Python • TG Bots</p>
+            </div>
+            <div class="info-block">
+                <h4>Gaming</h4>
+                <p>Counter-Strike • Dota 2</p>
+            </div>
         </div>
     </div>
+    <div class="panel-overlay" id="panel-overlay"></div>
+
+    <!-- 💬 Floating Comments (English) -->
+    <div class="floating-comments">
+        <div class="comment c-left-1">"The best vibe master"</div>
+        <div class="comment c-right-1">"Top tier teammate"</div>
+        <div class="comment c-left-2">"Always helps with code"</div>
+        <div class="comment c-right-2">"Liquid glass king"</div>
+    </div>
+
+    <main class="content-scroll">
+        <!-- 🎴 Main Card -->
+        <section class="glass-container main-card">
+            <div class="jester-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                    <path d="M12 2L9 8L3 6L6 12L2 16L8 18L12 23L16 18L22 16L18 12L21 6L15 8L12 2Z" stroke-linejoin="round"/>
+                    <circle cx="12" cy="2" r="1.5" fill="currentColor"/>
+                    <circle cx="3" cy="6" r="1.5" fill="currentColor"/>
+                    <circle cx="21" cy="6" r="1.5" fill="currentColor"/>
+                </svg>
+            </div>
+
+            <div class="avatar-wrapper">
+                <div class="avatar-spin-ring"></div>
+                <img src="avatar.jpg" alt="Immortal" class="avatar">
+                <div class="rose-badge">
+                    <svg viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M12,2C8.69,2 6,4.69 6,8C6,10.65 7.72,12.9 10.15,13.67C9.43,14.73 8.32,15.5 7,15.82C7,15.82 8.5,18 12,18C15.5,18 17,15.82 17,15.82C15.68,15.5 14.57,14.73 13.85,13.67C16.28,12.9 18,10.65 18,8C18,4.69 15.31,2 12,2M12,19.5C10.83,19.5 9.75,19.23 8.8,18.77C9.67,19.67 10.77,20.25 12,20.25C13.23,20.25 14.33,19.67 15.2,18.77C14.25,19.23 13.17,19.5 12,19.5Z"/>
+                    </svg>
+                </div>
+            </div>
+            
+            <h1 class="nickname">Immortal</h1>
+            <p class="quote">"When you love someone, you've gotta trust them, there's no other way..."</p>
+
+            <div class="casino-box">
+                <div class="slots">
+                    <span id="slot1">💎</span><span id="slot2">💎</span><span id="slot3">💎</span>
+                </div>
+                <button id="spin-btn" class="glass-button">SPIN TO WIN</button>
+                <p id="casino-msg">Try your luck, kid</p>
+            </div>
+
+            <div class="button-stack">
+                <a href="https://t.me/rivolty" target="_blank" class="liquid-btn">✈️ Telegram</a>
+                <a href="https://steamcommunity.com/profiles/76561199826022883/" target="_blank" class="liquid-btn">🎮 Steam</a>
+            </div>
+        </section>
+
+        <!-- 📖 BIO Section -->
+        <section class="glass-container bio-card" id="bio">
+            <h2 class="section-title">About Me</h2>
+            <div class="bio-content">
+                <p class="bio-text">Hey, I'm <strong>Immortal</strong> — a creator who blends code with aesthetics. I build desktop apps in C#, automate with Python, and craft beautiful interfaces that feel alive.</p>
+                <div class="bio-list">
+                    <div class="bio-item"><span>⚡</span> Passionate about clean code & dark UI</div>
+                    <div class="bio-item"><span>🎮</span> Gaming: CS2, Dota 2, indie gems</div>
+                    <div class="bio-item"><span>🤝</span> Always open to collabs & helping out</div>
+                </div>
+                <div class="bio-tags">
+                    <span class="tag">#Developer</span>
+                    <span class="tag">#Gamer</span>
+                    <span class="tag">#Aesthetic</span>
+                    <span class="tag">#NightOwl</span>
+                </div>
+            </div>
+        </section>
+    </main>
 
     <script src="script.js"></script>
 </body>
