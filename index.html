@@ -1,118 +1,275 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Immortal | Dimension</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Immortal · Digital Space</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=Inter:wght@300;400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-    <!-- 🌸 Sakura Container -->
-    <div id="sakura-container"></div>
-    
-    <video autoplay muted loop playsinline id="bg-video">
-        <source src="IMG_1919.MP4" type="video/mp4">
-    </video>
-
-    <!-- 🍔 Nav with Hamburger -->
-    <nav class="glass-nav">
-        <div class="menu-toggle" id="menu-toggle" role="button" aria-label="Menu">
-            <span></span><span></span><span></span>
-        </div>
-        <div class="nav-title">Immortal OS</div>
-    </nav>
-
-    <!-- 📱 Side Panel -->
-    <div class="side-panel" id="side-panel">
-        <div class="panel-header">
-            <h3>Quick Access</h3>
-            <button id="close-panel" class="close-btn">&times;</button>
-        </div>
-        <div class="panel-content">
-            <a href="#bio" class="panel-link">📖 About Me</a>
-            <a href="https://t.me/rivolty" target="_blank" class="panel-link">✈️ Telegram</a>
-            <a href="https://steamcommunity.com/profiles/76561199826022883/" target="_blank" class="panel-link">🎮 Steam</a>
-            <div class="panel-divider"></div>
-            <button id="theme-toggle" class="panel-link">🌓 Toggle Theme</button>
-            <div class="info-block">
-                <h4>Dev Stack</h4>
-                <p>C# Desktop • Python • TG Bots</p>
-            </div>
-            <div class="info-block">
-                <h4>Gaming</h4>
-                <p>Counter-Strike • Dota 2</p>
-            </div>
-        </div>
+ 
+  <!-- Ambient glow blobs -->
+  <div class="ambient ambient-1"></div>
+  <div class="ambient ambient-2"></div>
+  <div class="ambient ambient-3"></div>
+ 
+  <!-- Video background -->
+  <video id="bg-video" autoplay muted loop playsinline>
+    <source src="IMG_1919.MP4" type="video/mp4" />
+  </video>
+ 
+  <!-- Sakura petals -->
+  <div id="sakura-container"></div>
+ 
+  <!-- Floating comments -->
+  <div class="floats">
+    <div class="float-comment fc-1">✦ "Cleanest code I've seen"</div>
+    <div class="float-comment fc-2">✦ "Best teammate fr"</div>
+    <div class="float-comment fc-3">✦ "Liquid glass king"</div>
+    <div class="float-comment fc-4">✦ "Always delivers"</div>
+  </div>
+ 
+  <!-- ═══ NAV ══════════════════════════════════ -->
+  <nav class="nav">
+    <div class="nav-logo">Immortal OS</div>
+    <div class="nav-links">
+      <a href="#about"   class="nav-link">About</a>
+      <a href="#skills"  class="nav-link">Skills</a>
+      <a href="#connect" class="nav-link">Connect</a>
     </div>
-    <div class="panel-overlay" id="panel-overlay"></div>
-
-    <!-- 💬 Floating Comments (English) -->
-    <div class="floating-comments">
-        <div class="comment c-left-1">"The best vibe master"</div>
-        <div class="comment c-right-1">"Top tier teammate"</div>
-        <div class="comment c-left-2">"Always helps with code"</div>
-        <div class="comment c-right-2">"Liquid glass king"</div>
+    <a href="https://t.me/rivolty" target="_blank" class="nav-cta">→ Telegram</a>
+    <button class="nav-hamburger" id="hamburger" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+ 
+  <!-- ═══ DRAWER ════════════════════════════════ -->
+  <div class="drawer" id="drawer">
+    <div class="drawer-header">
+      <span class="drawer-title">Quick Access</span>
+      <button class="drawer-close" id="drawer-close">×</button>
     </div>
-
-    <main class="content-scroll">
-        <!-- 🎴 Main Card -->
-        <section class="glass-container main-card">
-            <div class="jester-icon">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                    <path d="M12 2L9 8L3 6L6 12L2 16L8 18L12 23L16 18L22 16L18 12L21 6L15 8L12 2Z" stroke-linejoin="round"/>
-                    <circle cx="12" cy="2" r="1.5" fill="currentColor"/>
-                    <circle cx="3" cy="6" r="1.5" fill="currentColor"/>
-                    <circle cx="21" cy="6" r="1.5" fill="currentColor"/>
-                </svg>
-            </div>
-
-            <div class="avatar-wrapper">
-                <div class="avatar-spin-ring"></div>
-                <img src="avatar.jpg" alt="Immortal" class="avatar">
-                <div class="rose-badge">
-                    <svg viewBox="0 0 24 24" fill="currentColor">
-                        <path d="M12,2C8.69,2 6,4.69 6,8C6,10.65 7.72,12.9 10.15,13.67C9.43,14.73 8.32,15.5 7,15.82C7,15.82 8.5,18 12,18C15.5,18 17,15.82 17,15.82C15.68,15.5 14.57,14.73 13.85,13.67C16.28,12.9 18,10.65 18,8C18,4.69 15.31,2 12,2M12,19.5C10.83,19.5 9.75,19.23 8.8,18.77C9.67,19.67 10.77,20.25 12,20.25C13.23,20.25 14.33,19.67 15.2,18.77C14.25,19.23 13.17,19.5 12,19.5Z"/>
-                    </svg>
-                </div>
-            </div>
-            
-            <h1 class="nickname">Immortal</h1>
-            <p class="quote">"When you love someone, you've gotta trust them, there's no other way..."</p>
-
-            <div class="casino-box">
-                <div class="slots">
-                    <span id="slot1">💎</span><span id="slot2">💎</span><span id="slot3">💎</span>
-                </div>
-                <button id="spin-btn" class="glass-button">SPIN TO WIN</button>
-                <p id="casino-msg">Try your luck, kid</p>
-            </div>
-
-            <div class="button-stack">
-                <a href="https://t.me/rivolty" target="_blank" class="liquid-btn">✈️ Telegram</a>
-                <a href="https://steamcommunity.com/profiles/76561199826022883/" target="_blank" class="liquid-btn">🎮 Steam</a>
-            </div>
-        </section>
-
-        <!-- 📖 BIO Section -->
-        <section class="glass-container bio-card" id="bio">
-            <h2 class="section-title">About Me</h2>
-            <div class="bio-content">
-                <p class="bio-text">Hey, I'm <strong>Immortal</strong> — a creator who blends code with aesthetics. I build desktop apps in C#, automate with Python, and craft beautiful interfaces that feel alive.</p>
-                <div class="bio-list">
-                    <div class="bio-item"><span>⚡</span> Passionate about clean code & dark UI</div>
-                    <div class="bio-item"><span>🎮</span> Gaming: CS2, Dota 2, indie gems</div>
-                    <div class="bio-item"><span>🤝</span> Always open to collabs & helping out</div>
-                </div>
-                <div class="bio-tags">
-                    <span class="tag">#Developer</span>
-                    <span class="tag">#Gamer</span>
-                    <span class="tag">#Aesthetic</span>
-                    <span class="tag">#NightOwl</span>
-                </div>
-            </div>
-        </section>
-    </main>
-
-    <script src="script.js"></script>
+    <a href="#about" class="drawer-item">
+      <span class="icon">📖</span> About Me
+    </a>
+    <a href="https://t.me/rivolty" target="_blank" class="drawer-item">
+      <span class="icon">✈️</span> Telegram
+    </a>
+    <a href="https://steamcommunity.com/profiles/76561199826022883/" target="_blank" class="drawer-item">
+      <span class="icon">🎮</span> Steam
+    </a>
+    <a href="#skills" class="drawer-item">
+      <span class="icon">⚡</span> Skills
+    </a>
+    <div class="drawer-divider"></div>
+    <div class="drawer-badge">
+      <h4>Stack</h4>
+      <p>C# Desktop · Python · TG Bots · Web</p>
+    </div>
+    <div class="drawer-badge" style="background:rgba(232,64,90,0.07);border-color:rgba(232,64,90,0.2);">
+      <h4 style="color:#ff6b84">Gaming</h4>
+      <p>Counter-Strike 2 · Dota 2</p>
+    </div>
+  </div>
+  <div class="overlay" id="overlay"></div>
+ 
+  <!-- ═══ HERO ══════════════════════════════════ -->
+  <section class="hero">
+    <div class="status-pill">
+      <span class="status-dot"></span>
+      Available for collabs
+    </div>
+ 
+    <div class="hero-avatar-wrap">
+      <div class="avatar-ring"></div>
+      <div class="avatar-glow"></div>
+      <img src="avatar.jpg" alt="Immortal" class="avatar" />
+    </div>
+ 
+    <h1 class="hero-name">Im<span>mortal</span></h1>
+    <p class="hero-sub">
+      Developer · Gamer · Creator.<br/>
+      <em>Building things that feel alive.</em>
+    </p>
+ 
+    <div class="hero-ctas">
+      <a href="https://t.me/rivolty" target="_blank" class="btn-primary">✈️ Telegram</a>
+      <a href="https://steamcommunity.com/profiles/76561199826022883/" target="_blank" class="btn-ghost">🎮 Steam Profile</a>
+      <a href="#about" class="btn-ghost">↓ Learn More</a>
+    </div>
+ 
+    <div class="scroll-hint">
+      <div class="scroll-line"></div>
+      scroll
+    </div>
+  </section>
+ 
+  <!-- ═══ ABOUT ═════════════════════════════════ -->
+  <section class="section reveal" id="about">
+    <div class="section-label">01 — Who I am</div>
+    <h2 class="section-title">About Me</h2>
+ 
+    <div class="about-grid">
+      <div class="glass-card about-main">
+        <p class="about-bio">
+          Hey — I'm <strong>Immortal</strong>. I blend code with aesthetics to build
+          things that feel alive. Desktop apps in <strong>C#</strong>, automation with
+          <strong>Python</strong>, Telegram bots, and interfaces that make people
+          stop scrolling. I care deeply about craft — whether it's a pixel or a function.
+          Dark UI, clean logic, no compromises.
+        </p>
+        <p class="about-bio">
+          When I'm not in the editor, I'm in-game. CS2 and Dota 2 are my arenas —
+          same precision required, higher stakes.
+        </p>
+        <div class="about-tags">
+          <span class="tag">#Developer</span>
+          <span class="tag">#C#</span>
+          <span class="tag">#Python</span>
+          <span class="tag">#Gamer</span>
+          <span class="tag">#NightOwl</span>
+          <span class="tag">#Aesthetic</span>
+          <span class="tag">#OpenToCollabs</span>
+        </div>
+      </div>
+ 
+      <div class="glass-card stat-card">
+        <div class="stat-num">C#</div>
+        <div class="stat-label">Primary language — Desktop apps &amp; tools</div>
+      </div>
+      <div class="glass-card stat-card">
+        <div class="stat-num">🤖</div>
+        <div class="stat-label">Python automation &amp; Telegram bots</div>
+      </div>
+      <div class="glass-card stat-card">
+        <div class="stat-num">CS2</div>
+        <div class="stat-label">Main game — Counter-Strike 2</div>
+      </div>
+      <div class="glass-card stat-card">
+        <div class="stat-num">∞</div>
+        <div class="stat-label">Always open to new ideas</div>
+      </div>
+    </div>
+  </section>
+ 
+  <!-- ═══ SKILLS ════════════════════════════════ -->
+  <section class="section reveal" id="skills">
+    <div class="section-label">02 — What I build</div>
+    <h2 class="section-title">Skills</h2>
+ 
+    <div class="skills-grid">
+      <div class="glass-card skill-card">
+        <div class="skill-icon">🖥️</div>
+        <div class="skill-name">C# / .NET</div>
+        <div class="skill-bar-track">
+          <div class="skill-bar-fill" style="--w:0.88"></div>
+        </div>
+        <div class="skill-desc">Desktop applications, WPF, WinForms, system tools</div>
+      </div>
+      <div class="glass-card skill-card">
+        <div class="skill-icon">🐍</div>
+        <div class="skill-name">Python</div>
+        <div class="skill-bar-track">
+          <div class="skill-bar-fill" style="--w:0.80"></div>
+        </div>
+        <div class="skill-desc">Scripts, automation, bots, data processing</div>
+      </div>
+      <div class="glass-card skill-card">
+        <div class="skill-icon">✈️</div>
+        <div class="skill-name">Telegram Bots</div>
+        <div class="skill-bar-track">
+          <div class="skill-bar-fill" style="--w:0.85"></div>
+        </div>
+        <div class="skill-desc">Aiogram, pyrogram — from simple bots to complex systems</div>
+      </div>
+      <div class="glass-card skill-card">
+        <div class="skill-icon">🎨</div>
+        <div class="skill-name">UI / UX Design</div>
+        <div class="skill-bar-track">
+          <div class="skill-bar-fill" style="--w:0.75"></div>
+        </div>
+        <div class="skill-desc">Dark aesthetic interfaces, liquid glass, clean layouts</div>
+      </div>
+      <div class="glass-card skill-card">
+        <div class="skill-icon">🌐</div>
+        <div class="skill-name">Web (HTML/CSS/JS)</div>
+        <div class="skill-bar-track">
+          <div class="skill-bar-fill" style="--w:0.70"></div>
+        </div>
+        <div class="skill-desc">Landing pages, personal sites, interactive experiences</div>
+      </div>
+      <div class="glass-card skill-card">
+        <div class="skill-icon">🎮</div>
+        <div class="skill-name">Gaming</div>
+        <div class="skill-bar-track">
+          <div class="skill-bar-fill" style="--w:0.95"></div>
+        </div>
+        <div class="skill-desc">CS2, Dota 2 — not a hobby, a lifestyle</div>
+      </div>
+    </div>
+  </section>
+ 
+  <!-- ═══ CASINO ════════════════════════════════ -->
+  <section class="section reveal">
+    <div class="section-label">03 — Try your luck</div>
+    <div class="glass-card casino-card">
+      <div class="casino-headline">🎰 Immortal Casino</div>
+      <div class="casino-sub">Hit spin. Maybe fortune smiles today.</div>
+      <div class="slots-display" id="slots-wrap">
+        <div class="slot-reel" id="s1">💎</div>
+        <div class="slot-reel" id="s2">💎</div>
+        <div class="slot-reel" id="s3">💎</div>
+      </div>
+      <button class="casino-btn" id="spin-btn">SPIN TO WIN</button>
+      <p id="casino-msg">Try your luck, kid.</p>
+    </div>
+  </section>
+ 
+  <!-- ═══ QUOTE ═════════════════════════════════ -->
+  <section class="section reveal">
+    <div class="glass-card quote-card">
+      <div class="quote-mark">"</div>
+      <p class="quote-text">When you love someone, you've gotta trust them — there's no other way to love.</p>
+      <div class="quote-author">— Immortal</div>
+    </div>
+  </section>
+ 
+  <!-- ═══ CONNECT ══════════════════════════════ -->
+  <section class="section reveal" id="connect">
+    <div class="section-label">04 — Find me</div>
+    <h2 class="section-title">Connect</h2>
+ 
+    <div class="connect-grid">
+      <a href="https://t.me/rivolty" target="_blank" class="glass-card connect-card">
+        <div class="connect-icon connect-icon-tg">✈️</div>
+        <div class="connect-info">
+          <div class="connect-name">Telegram</div>
+          <div class="connect-handle">@rivolty</div>
+        </div>
+        <div class="connect-arrow">→</div>
+      </a>
+      <a href="https://steamcommunity.com/profiles/76561199826022883/" target="_blank" class="glass-card connect-card">
+        <div class="connect-icon connect-icon-steam">🎮</div>
+        <div class="connect-info">
+          <div class="connect-name">Steam</div>
+          <div class="connect-handle">View Profile</div>
+        </div>
+        <div class="connect-arrow">→</div>
+      </a>
+    </div>
+  </section>
+ 
+  <!-- ═══ FOOTER ════════════════════════════════ -->
+  <footer>
+    <p>
+      Crafted by <a href="https://t.me/rivolty">Immortal</a> · Liquid Glass aesthetic inspired by iOS 26<br/>
+      <span style="opacity:0.4; font-size:11px">© 2026 — All vibes reserved</span>
+    </p>
+  </footer>
+ 
+  <script src="script.js"></script>
 </body>
 </html>
