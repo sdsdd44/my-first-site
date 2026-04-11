@@ -1,129 +1,193 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru" data-theme="dark">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Immortal · Digital Space</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=Inter:wght@300;400;500&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
- 
-  <!-- Ambient glow blobs -->
+
   <div class="ambient ambient-1"></div>
   <div class="ambient ambient-2"></div>
   <div class="ambient ambient-3"></div>
- 
-  <!-- Video background -->
+
   <video id="bg-video" autoplay muted loop playsinline>
     <source src="IMG_1919.MP4" type="video/mp4" />
   </video>
- 
-  <!-- Sakura petals -->
+
   <div id="sakura-container"></div>
- 
-  <!-- Floating comments -->
+
   <div class="floats">
     <div class="float-comment fc-1">✦ "Cleanest code I've seen"</div>
     <div class="float-comment fc-2">✦ "Best teammate fr"</div>
     <div class="float-comment fc-3">✦ "Liquid glass king"</div>
     <div class="float-comment fc-4">✦ "Always delivers"</div>
   </div>
- 
+
   <!-- ═══ NAV ══════════════════════════════════ -->
-  <nav class="nav">
-    <div class="nav-logo">Immortal OS</div>
-    <div class="nav-links">
-      <a href="#about"   class="nav-link">About</a>
-      <a href="#skills"  class="nav-link">Skills</a>
-      <a href="#connect" class="nav-link">Connect</a>
+  <div class="nav-wrapper">
+
+  <!-- Левый островок: тема -->
+  <div class="nav-island nav-island-left">
+    <div class="theme-soon-wrap">
+      <button class="theme-toggle-soon" disabled aria-label="Theme toggle — coming soon">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none"
+             stroke="currentColor" stroke-width="2"
+             stroke-linecap="round" stroke-linejoin="round">
+          <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+        </svg>
+      </button>
+      <span class="soon-label">Soon!</span>
     </div>
-    <a href="https://t.me/rivolty" target="_blank" class="nav-cta">→ Telegram</a>
+  </div>
+
+  <!-- Центральный островок: логотип -->
+  <div class="nav-island nav-island-center">
+    <span class="nav-logo">IMMORTAL</span>
+    <span class="nav-clock" id="nav-clock">00:00</span>
+  </div>
+
+  <!-- Правый островок: гамбургер -->
+  <div class="nav-island nav-island-right">
     <button class="nav-hamburger" id="hamburger" aria-label="Menu">
       <span></span><span></span><span></span>
     </button>
-  </nav>
- 
+  </div>
+
+</div>
+
+
+
+    <div class="nav-island nav-island-right">
+      <div class="theme-soon-wrap">
+        <button class="theme-toggle-soon" disabled aria-label="Theme toggle — coming soon">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none"
+               stroke="currentColor" stroke-width="2"
+               stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+          </svg>
+        </button>
+        <span class="soon-label">Soon!</span>
+      </div>
+    </div>
+
+  </div>
+
   <!-- ═══ DRAWER ════════════════════════════════ -->
   <div class="drawer" id="drawer">
     <div class="drawer-header">
-      <span class="drawer-title">Quick Access</span>
+      <span class="drawer-title">Быстрый доступ</span>
       <button class="drawer-close" id="drawer-close">×</button>
     </div>
-    <a href="#about" class="drawer-item">
-      <span class="icon">📖</span> About Me
-    </a>
-    <a href="https://t.me/rivolty" target="_blank" class="drawer-item">
-      <span class="icon">✈️</span> Telegram
-    </a>
-    <a href="https://steamcommunity.com/profiles/76561199826022883/" target="_blank" class="drawer-item">
-      <span class="icon">🎮</span> Steam
-    </a>
-    <a href="#skills" class="drawer-item">
-      <span class="icon">⚡</span> Skills
-    </a>
-    <div class="drawer-divider"></div>
-    <div class="drawer-badge">
-      <h4>Stack</h4>
-      <p>C# Desktop · Python · TG Bots · Web</p>
+
+    <div class="drawer-profile">
+      <img src="avatar.jpg" alt="Immortal" class="drawer-avatar" />
+      <div>
+        <div class="drawer-profile-name">Immortal</div>
+        <div class="drawer-profile-sub">
+          <span class="drawer-dot"></span> Online
+        </div>
+      </div>
     </div>
-    <div class="drawer-badge" style="background:rgba(232,64,90,0.07);border-color:rgba(232,64,90,0.2);">
-      <h4 style="color:#ff6b84">Gaming</h4>
-      <p>Counter-Strike 2 · Dota 2</p>
+
+    <div class="drawer-divider"></div>
+
+    <a href="#about"   class="drawer-item"><span class="dicon">◈</span><span>Обо мне</span><span class="darrow">↗</span></a>
+    <a href="#skills"  class="drawer-item"><span class="dicon">◆</span><span>Навыки</span><span class="darrow">↗</span></a>
+    <a href="#gallery" class="drawer-item"><span class="dicon">◇</span><span>Галерея</span><span class="darrow">↗</span></a>
+    <a href="#connect" class="drawer-item"><span class="dicon">◎</span><span>Контакты</span><span class="darrow">↗</span></a>
+
+    <div class="drawer-divider"></div>
+
+    <div class="drawer-stack">
+      <div class="drawer-stack-label">Dev Stack</div>
+      <div class="drawer-stack-tags">
+        <span class="drawer-tag">C# (WPF)</span>
+        <span class="drawer-tag">Python</span>
+        <span class="drawer-tag">Telegram Bots</span>
+        <span class="drawer-tag">Web</span>
+      </div>
+    </div>
+
+    <div class="drawer-status">
+      <div class="drawer-stack-label">System Status</div>
+      <div class="drawer-status-item">
+        <span>Dev Projects</span>
+        <span class="dpill dpill-progress">In Progress</span>
+      </div>
+      <div class="drawer-status-item">
+        <span>Open to Collabs</span>
+        <span class="dpill dpill-done">Active</span>
+      </div>
+      <div class="drawer-status-item">
+        <span>CS2 Ranked</span>
+        <span class="dpill dpill-live">Live</span>
+      </div>
     </div>
   </div>
   <div class="overlay" id="overlay"></div>
- 
+
   <!-- ═══ HERO ══════════════════════════════════ -->
   <section class="hero">
     <div class="status-pill">
       <span class="status-dot"></span>
-      Available for collabs
+      Открыт к коллаборациям
     </div>
- 
+
     <div class="hero-avatar-wrap">
+      <div class="avatar-watermark" aria-hidden="true">IMMORTAL IMMORTAL IMMORTAL IMMORTAL</div>
       <div class="avatar-ring"></div>
       <div class="avatar-glow"></div>
       <img src="avatar.jpg" alt="Immortal" class="avatar" />
     </div>
- 
+
     <h1 class="hero-name">Im<span>mortal</span></h1>
     <p class="hero-sub">
-      Developer · Gamer · Creator.<br/>
-      <em>Building things that feel alive.</em>
+      Разработчик · Геймер · Создатель.<br/>
+      <em>Строю вещи, которые живут.</em>
     </p>
- 
+
     <div class="hero-ctas">
-      <a href="https://t.me/rivolty" target="_blank" class="btn-primary">✈️ Telegram</a>
-      <a href="https://steamcommunity.com/profiles/76561199826022883/" target="_blank" class="btn-ghost">🎮 Steam Profile</a>
-      <a href="#about" class="btn-ghost">↓ Learn More</a>
+      <a href="#about"  class="btn-primary">↓ Узнать больше</a>
+      <a href="#skills" class="btn-ghost">◆ Навыки</a>
     </div>
- 
+
     <div class="scroll-hint">
       <div class="scroll-line"></div>
       scroll
     </div>
   </section>
- 
+
   <!-- ═══ ABOUT ═════════════════════════════════ -->
   <section class="section reveal" id="about">
-    <div class="section-label">01 — Who I am</div>
-    <h2 class="section-title">About Me</h2>
- 
-    <div class="about-grid">
-      <div class="glass-card about-main">
+    <div class="section-label">01 — Кто я</div>
+    <h2 class="section-title">Обо мне</h2>
+
+    <div class="bento-grid">
+
+      <!-- Профиль — главная карточка -->
+      <div class="glass-card bento-profile">
+        <div class="bento-profile-top">
+          <div class="bento-avatar-wrap">
+            <img src="avatar.jpg" alt="Immortal" class="bento-avatar" />
+            <span class="bento-online-dot"></span>
+          </div>
+          <div>
+            <div class="bento-profile-name">Иммортал <span class="bento-handle">(Immortal)</span></div>
+            <div class="bento-profile-role">Software Developer &amp; Creator</div>
+          </div>
+        </div>
+        <p class="bento-headline">Люблю чистый код, мрачный UI и продуманный дизайн.</p>
         <p class="about-bio">
-          Hey — I'm <strong>Immortal</strong>. I blend code with aesthetics to build
-          things that feel alive. Desktop apps in <strong>C#</strong>, automation with
-          <strong>Python</strong>, Telegram bots, and interfaces that make people
-          stop scrolling. I care deeply about craft — whether it's a pixel or a function.
-          Dark UI, clean logic, no compromises.
-        </p>
-        <p class="about-bio">
-          When I'm not in the editor, I'm in-game. CS2 and Dota 2 are my arenas —
-          same precision required, higher stakes.
+          Привет — я <strong>Иммортал</strong>. Соединяю код с эстетикой. Пишу десктопные
+          приложения на <strong>C#</strong>, автоматизирую на <strong>Python</strong>, строю
+          Telegram-боты и делаю интерфейсы, от которых невозможно оторваться. Тёмный UI,
+          чистая логика, никаких компромиссов. Когда не в редакторе — в игре.
+          CS2 и Dota 2 — мои арены.
         </p>
         <div class="about-tags">
           <span class="tag">#Developer</span>
@@ -135,141 +199,228 @@
           <span class="tag">#OpenToCollabs</span>
         </div>
       </div>
- 
+
+      <!-- Dev Stack -->
+      <div class="glass-card bento-devstack">
+        <div class="bento-card-label">Dev Stack</div>
+        <div class="bento-stack-tags">
+          <span class="stack-tag">C# (WPF)</span>
+          <span class="stack-tag">Python</span>
+          <span class="stack-tag">Telegram Bots</span>
+          <span class="stack-tag">Web</span>
+          <span class="stack-tag">WinForms</span>
+          <span class="stack-tag">Aiogram</span>
+        </div>
+      </div>
+
+      <!-- System Status -->
+      <div class="glass-card bento-status">
+        <div class="bento-card-label">System Status</div>
+        <div class="status-list">
+          <div class="status-row">
+            <span>Dev Projects</span>
+            <span class="status-badge badge-progress">In Progress</span>
+          </div>
+          <div class="status-row">
+            <span>Open to Collabs</span>
+            <span class="status-badge badge-done">Active</span>
+          </div>
+          <div class="status-row">
+            <span>CS2 Ranked</span>
+            <span class="status-badge badge-live">Live</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Stat mini cards -->
       <div class="glass-card stat-card">
         <div class="stat-num">C#</div>
-        <div class="stat-label">Primary language — Desktop apps &amp; tools</div>
+        <div class="stat-label">Основной язык</div>
       </div>
       <div class="glass-card stat-card">
-        <div class="stat-num">🤖</div>
-        <div class="stat-label">Python automation &amp; Telegram bots</div>
+        <div class="stat-num">Bot</div>
+        <div class="stat-label">Telegram-автоматизация</div>
       </div>
       <div class="glass-card stat-card">
         <div class="stat-num">CS2</div>
-        <div class="stat-label">Main game — Counter-Strike 2</div>
+        <div class="stat-label">Основная игра</div>
       </div>
       <div class="glass-card stat-card">
         <div class="stat-num">∞</div>
-        <div class="stat-label">Always open to new ideas</div>
+        <div class="stat-label">Открыт к идеям</div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ═══ GALLERY ════════════════════════════════ -->
+  <!-- Назови картинку: gallery-bg.jpg -->
+  <section class="section reveal" id="gallery">
+    <div class="section-label">02 — Атмосфера</div>
+    <h2 class="section-title">Галерея</h2>
+
+    <div class="gallery-grid">
+      <div class="glass-card gallery-main">
+        <img src="gallery-bg.png" alt="Gallery main" class="gallery-img" />
+        <div class="gallery-overlay">
+          <div class="gallery-caption">
+            <span class="gallery-cap-tag">◆ Immortal</span>
+            <p>Код. Игра. Эстетика.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="glass-card gallery-stat">
+        <div class="gallery-stat-num">2026</div>
+        <div class="gallery-stat-label">Год активной разработки</div>
+      </div>
+      <div class="glass-card bento-stat-card">
+        <div class="stat-num">24/7</div>
+        <div class="stat-label">Режим работы</div>
+    </div>
+      <div class="glass-card gallery-stat">
+        <div class="gallery-stat-num">C#</div>
+        <div class="gallery-stat-label">Главный инструмент</div>
+      </div>
+
+      <div class="glass-card gallery-quote-mini">
+        <div class="gallery-qm">"</div>
+        <p>Когда любишь — нужно доверять. Иначе это не любовь.</p>
+        <span>— Иммортал</span>
+      </div>
+
+      <div class="glass-card gallery-games">
+        <div class="bento-card-label">Игровой профиль</div>
+        <div class="games-list">
+          <div class="game-row">
+            <span class="game-dot"></span>
+            <span class="game-name">Counter-Strike 2</span>
+            <span class="game-badge">Main</span>
+          </div>
+          <div class="game-row">
+            <span class="game-dot game-dot-2"></span>
+            <span class="game-name">Dota 2</span>
+            <span class="game-badge game-badge-2">Active</span>
+          </div>
+        </div>
       </div>
     </div>
   </section>
- 
+
   <!-- ═══ SKILLS ════════════════════════════════ -->
   <section class="section reveal" id="skills">
-    <div class="section-label">02 — What I build</div>
-    <h2 class="section-title">Skills</h2>
- 
+    <div class="section-label">03 — Что я делаю</div>
+    <h2 class="section-title">Навыки</h2>
     <div class="skills-grid">
       <div class="glass-card skill-card">
-        <div class="skill-icon">🖥️</div>
+        <div class="skill-icon">▣</div>
         <div class="skill-name">C# / .NET</div>
-        <div class="skill-bar-track">
-          <div class="skill-bar-fill" style="--w:0.88"></div>
-        </div>
-        <div class="skill-desc">Desktop applications, WPF, WinForms, system tools</div>
+        <div class="skill-bar-track"><div class="skill-bar-fill" style="--w:0.88"></div></div>
+        <div class="skill-pct">88%</div>
+        <div class="skill-desc">Desktop, WPF, WinForms, системные инструменты</div>
       </div>
       <div class="glass-card skill-card">
-        <div class="skill-icon">🐍</div>
+        <div class="skill-icon">◈</div>
         <div class="skill-name">Python</div>
-        <div class="skill-bar-track">
-          <div class="skill-bar-fill" style="--w:0.80"></div>
-        </div>
-        <div class="skill-desc">Scripts, automation, bots, data processing</div>
+        <div class="skill-bar-track"><div class="skill-bar-fill" style="--w:0.80"></div></div>
+        <div class="skill-pct">80%</div>
+        <div class="skill-desc">Скрипты, автоматизация, боты, обработка данных</div>
       </div>
       <div class="glass-card skill-card">
-        <div class="skill-icon">✈️</div>
+        <div class="skill-icon">◎</div>
         <div class="skill-name">Telegram Bots</div>
-        <div class="skill-bar-track">
-          <div class="skill-bar-fill" style="--w:0.85"></div>
-        </div>
-        <div class="skill-desc">Aiogram, pyrogram — from simple bots to complex systems</div>
+        <div class="skill-bar-track"><div class="skill-bar-fill" style="--w:0.85"></div></div>
+        <div class="skill-pct">85%</div>
+        <div class="skill-desc">Aiogram, Pyrogram — от простых до сложных систем</div>
       </div>
       <div class="glass-card skill-card">
-        <div class="skill-icon">🎨</div>
+        <div class="skill-icon">◇</div>
         <div class="skill-name">UI / UX Design</div>
-        <div class="skill-bar-track">
-          <div class="skill-bar-fill" style="--w:0.75"></div>
-        </div>
-        <div class="skill-desc">Dark aesthetic interfaces, liquid glass, clean layouts</div>
+        <div class="skill-bar-track"><div class="skill-bar-fill" style="--w:0.75"></div></div>
+        <div class="skill-pct">75%</div>
+        <div class="skill-desc">Тёмные интерфейсы, liquid glass, чистые лейауты</div>
       </div>
       <div class="glass-card skill-card">
-        <div class="skill-icon">🌐</div>
+        <div class="skill-icon">◉</div>
         <div class="skill-name">Web (HTML/CSS/JS)</div>
-        <div class="skill-bar-track">
-          <div class="skill-bar-fill" style="--w:0.70"></div>
-        </div>
-        <div class="skill-desc">Landing pages, personal sites, interactive experiences</div>
+        <div class="skill-bar-track"><div class="skill-bar-fill" style="--w:0.70"></div></div>
+        <div class="skill-pct">70%</div>
+        <div class="skill-desc">Лендинги, личные сайты, интерактивные проекты</div>
       </div>
       <div class="glass-card skill-card">
-        <div class="skill-icon">🎮</div>
+        <div class="skill-icon">◆</div>
         <div class="skill-name">Gaming</div>
-        <div class="skill-bar-track">
-          <div class="skill-bar-fill" style="--w:0.95"></div>
-        </div>
-        <div class="skill-desc">CS2, Dota 2 — not a hobby, a lifestyle</div>
+        <div class="skill-bar-track"><div class="skill-bar-fill" style="--w:0.95"></div></div>
+        <div class="skill-pct">95%</div>
+        <div class="skill-desc">CS2, Dota 2 — не хобби, образ жизни</div>
       </div>
     </div>
   </section>
- 
-  <!-- ═══ CASINO ════════════════════════════════ -->
-  <section class="section reveal">
-    <div class="section-label">03 — Try your luck</div>
-    <div class="glass-card casino-card">
-      <div class="casino-headline">🎰 Immortal Casino</div>
-      <div class="casino-sub">Hit spin. Maybe fortune smiles today.</div>
-      <div class="slots-display" id="slots-wrap">
-        <div class="slot-reel" id="s1">💎</div>
-        <div class="slot-reel" id="s2">💎</div>
-        <div class="slot-reel" id="s3">💎</div>
-      </div>
-      <button class="casino-btn" id="spin-btn">SPIN TO WIN</button>
-      <p id="casino-msg">Try your luck, kid.</p>
-    </div>
-  </section>
- 
+
   <!-- ═══ QUOTE ═════════════════════════════════ -->
   <section class="section reveal">
     <div class="glass-card quote-card">
       <div class="quote-mark">"</div>
-      <p class="quote-text">When you love someone, you've gotta trust them — there's no other way to love.</p>
-      <div class="quote-author">— Immortal</div>
+      <p class="quote-text">Когда любишь — нужно доверять. Иначе это не любовь.</p>
+      <div class="quote-author">— Иммортал</div>
     </div>
   </section>
- 
-  <!-- ═══ CONNECT ══════════════════════════════ -->
-  <section class="section reveal" id="connect">
-    <div class="section-label">04 — Find me</div>
-    <h2 class="section-title">Connect</h2>
- 
-    <div class="connect-grid">
-      <a href="https://t.me/rivolty" target="_blank" class="glass-card connect-card">
-        <div class="connect-icon connect-icon-tg">✈️</div>
-        <div class="connect-info">
-          <div class="connect-name">Telegram</div>
-          <div class="connect-handle">@rivolty</div>
+
+  <!-- ═══ CONNECT / FOOTER ══════════════════════ -->
+  <footer id="connect">
+    <div class="footer-inner">
+
+      <div class="footer-top">
+        <div class="footer-brand">
+          <span class="footer-logo">Immortal OS</span>
+          <p class="footer-desc">Разработчик · Геймер · Создатель.<br/>Строю вещи, которые живут.</p>
         </div>
-        <div class="connect-arrow">→</div>
-      </a>
-      <a href="https://steamcommunity.com/profiles/76561199826022883/" target="_blank" class="glass-card connect-card">
-        <div class="connect-icon connect-icon-steam">🎮</div>
-        <div class="connect-info">
-          <div class="connect-name">Steam</div>
-          <div class="connect-handle">View Profile</div>
+
+        <div class="footer-links-col">
+          <div class="footer-col-label">Навигация</div>
+          <a href="#about"   class="footer-link">Обо мне</a>
+          <a href="#gallery" class="footer-link">Галерея</a>
+          <a href="#skills"  class="footer-link">Навыки</a>
         </div>
-        <div class="connect-arrow">→</div>
-      </a>
+
+        <div class="footer-links-col">
+          <div class="footer-col-label">Контакты</div>
+          <a href="https://t.me/rivolty" target="_blank" class="footer-contact-card">
+            <span class="fcc-icon">◎</span>
+            <div>
+              <div class="fcc-name">Telegram</div>
+              <div class="fcc-val">@rivolty</div>
+            </div>
+            <span class="fcc-arrow">↗</span>
+          </a>
+          <a href="https://steamcommunity.com/profiles/76561199826022883/" target="_blank" class="footer-contact-card">
+            <span class="fcc-icon">◉</span>
+            <div>
+              <div class="fcc-name">Steam</div>
+              <div class="fcc-val">View Profile</div>
+            </div>
+            <span class="fcc-arrow">↗</span>
+          </a>
+          <a href="mailto:your@email.com" class="footer-contact-card">
+            <span class="fcc-icon">◇</span>
+            <div>
+              <div class="fcc-name">Email</div>
+              <div class="fcc-val">your@email.com</div>
+            </div>
+            <span class="fcc-arrow">↗</span>
+          </a>
+        </div>
+      </div>
+
+      <div class="footer-divider"></div>
+
+      <div class="footer-bottom">
+        <span>© 2026 Immortal · All vibes reserved</span>
+        <span class="footer-bottom-right">Liquid Glass · iOS 26 aesthetic</span>
+      </div>
     </div>
-  </section>
- 
-  <!-- ═══ FOOTER ════════════════════════════════ -->
-  <footer>
-    <p>
-      Crafted by <a href="https://t.me/rivolty">Immortal</a> · Liquid Glass aesthetic inspired by iOS 26<br/>
-      <span style="opacity:0.4; font-size:11px">© 2026 — All vibes reserved</span>
-    </p>
   </footer>
- 
+
   <script src="script.js"></script>
 </body>
 </html>
