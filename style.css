@@ -503,7 +503,6 @@ body::before {
 .stat-label { font-size:11.5px; color:var(--c-muted); line-height:1.4; }
 
 /* ─── GALLERY ────────────────────────────── */
-/* Назови картинку: gallery-bg.jpg */
 .gallery-grid {
   display:grid;
   grid-template-columns:2fr 1fr;
@@ -692,13 +691,31 @@ footer::before {
   .gallery-stat, .gallery-quote-mini, .gallery-games { grid-column:1/2; }
   .footer-top { grid-template-columns:1fr; gap:32px; }
   .floats { display:none; }
-  .hero-name { letter-spacing:-2px; }
+  
+  /* ФИКС: Адаптивный шрифт для имени, чтобы не переносилось криво */
+  .hero-name { font-size:clamp(42px, 12vw, 64px); letter-spacing:-2px; }
+  .hero-sub { padding: 0 10px; }
+  
   .nav-clock { display:none; }
   .footer-contact-card { min-width:unset; }
+
+  /* ОПТИМИЗАЦИЯ: Сильно уменьшен blur для сохранения FPS и батареи на смартфонах */
+  #bg-video { filter:brightness(0.2) blur(4px) saturate(110%); }
+  .ambient { filter:blur(50px); } 
+
+  /* ОПТИМИЗАЦИЯ: Убираем "залипающие" эффекты наведения (ховеры) после тапа на смартфонах */
+  .glass-card:hover { transform: none; box-shadow: var(--glass-inner), var(--glass-shadow); }
 }
+
 @media (max-width:440px) {
-  .skills-grid { grid-template-columns:1fr 1fr; }
+  /* ФИКС: Карточки в 1 колонку, иначе они слишком сплющивались */
+  .skills-grid { grid-template-columns:1fr; }
+  /* Уменьшаем отступы для большего свободного пространства */
+  .section { padding:40px 15px; }
+  .glass-card { padding:18px; }
+  .nav-island-left, .nav-island-right { padding:0 8px; }
 }
+
 @media (prefers-reduced-motion:reduce) {
   *,*::before,*::after { animation-duration:0.01ms !important; transition-duration:0.01ms !important; }
   #sakura-container,.floats { display:none; }
