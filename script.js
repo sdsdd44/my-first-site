@@ -16,7 +16,9 @@ document.addEventListener('DOMContentLoaded', () => {
   /* ── SMOOTH SCROLL ───────────────────────── */
   document.querySelectorAll('a[href^="#"]').forEach(a => {
     a.addEventListener('click', e => {
-      const target = document.querySelector(a.getAttribute('href'));
+      const href = a.getAttribute('href');
+      if (href === '#') return; // FIX: Защита от пустых ссылок-заглушек
+      const target = document.querySelector(href);
       if (!target) return;
       e.preventDefault();
       target.scrollIntoView({ behavior:'smooth', block:'start' });
@@ -58,7 +60,15 @@ document.addEventListener('DOMContentLoaded', () => {
     ['rgba(255,180,50,0.26)','rgba(255,140,70,0.13)'],
   ];
 
+  // ОПТИМИЗАЦИЯ: Определяем мобильное устройство
+  const isMobile = /Mobi|Android/i.test(navigator.userAgent) || window.innerWidth < 768;
+  const spawnInterval = isMobile ? 1500 : 750; // На мобильных лепестки спавнятся в 2 раза реже
+  const initialSpawns = isMobile ? 3 : 7;
+
   function spawnPetal() {
+    // Не нагружаем систему, если вкладка свернута или открыто боковое меню
+    if (document.hidden || drawer.classList.contains('open')) return;
+
     const el = document.createElement('div');
     el.className = 'petal';
     const [c1,c2] = palettes[Math.floor(Math.random() * palettes.length)];
@@ -80,11 +90,12 @@ document.addEventListener('DOMContentLoaded', () => {
     setTimeout(() => el.remove(), (dur + 2) * 1000);
   }
 
-  for (let i = 0; i < 7; i++) setTimeout(spawnPetal, i * 250);
-  let sakuraTimer = setInterval(spawnPetal, 750);
+  for (let i = 0; i < initialSpawns; i++) setTimeout(spawnPetal, i * 250);
+  let sakuraTimer = setInterval(spawnPetal, spawnInterval);
+
   document.addEventListener('visibilitychange', () => {
     if (document.hidden) clearInterval(sakuraTimer);
-    else sakuraTimer = setInterval(spawnPetal, 750);
+    else sakuraTimer = setInterval(spawnPetal, spawnInterval);
   });
 
   /* ── SCROLL REVEAL ───────────────────────── */
@@ -102,9 +113,6 @@ document.addEventListener('DOMContentLoaded', () => {
   document.querySelectorAll('.reveal').forEach(el => revealObs.observe(el));
 
   /* ── CARD TILT ───────────────────────────── */
-  const isMobile = /Mobi|Android/i.test(navigator.userAgent) ||
-                   window.matchMedia('(pointer:coarse)').matches;
-
   if (!isMobile) {
     let rafId;
     const MAX = 4.5;
