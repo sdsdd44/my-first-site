@@ -2,7 +2,8 @@
 <html lang="ru" data-theme="dark">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <!-- ФИКС ЗУМА: Жесткий запрет на масштабирование страницы на мобильных -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
   <title>Immortal · Digital Space</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -15,8 +16,8 @@
   <div class="ambient ambient-2"></div>
   <div class="ambient ambient-3"></div>
 
-  <!-- Добавлен poster для красивой заглушки во время загрузки на мобильном интернете -->
-  <video id="bg-video" autoplay muted loop playsinline poster="gallery-bg.png">
+  <!-- ВИДЕО ВЕРНУЛОСЬ: Убрали poster, оставили оригинальное поведение -->
+  <video id="bg-video" autoplay muted loop playsinline>
     <source src="IMG_1919.MP4" type="video/mp4" />
   </video>
 
@@ -32,7 +33,6 @@
 <!-- ═══ NAV ══════════════════════════════════ -->
 <div class="nav-wrapper">
 
-  <!-- Левый островок: тема (Soon) -->
   <div class="nav-island nav-island-left">
     <div class="theme-soon-wrap">
       <button class="theme-toggle-soon" disabled aria-label="Theme toggle — coming soon">
@@ -46,13 +46,11 @@
     </div>
   </div>
 
-  <!-- Центральный островок: логотип + время -->
   <div class="nav-island nav-island-center">
     <span class="nav-logo">IMMORTAL</span>
     <span class="nav-clock" id="nav-clock">00:00</span>
   </div>
 
-  <!-- Правый островок: гамбургер -->
   <div class="nav-island nav-island-right">
     <button class="nav-hamburger" id="hamburger" aria-label="Menu">
       <span></span><span></span><span></span>
@@ -153,7 +151,6 @@
 
     <div class="bento-grid">
 
-      <!-- Профиль — главная карточка -->
       <div class="glass-card bento-profile">
         <div class="bento-profile-top">
           <div class="bento-avatar-wrap">
@@ -184,7 +181,6 @@
         </div>
       </div>
 
-      <!-- Dev Stack -->
       <div class="glass-card bento-devstack">
         <div class="bento-card-label">Dev Stack</div>
         <div class="bento-stack-tags">
@@ -197,7 +193,6 @@
         </div>
       </div>
 
-      <!-- System Status -->
       <div class="glass-card bento-status">
         <div class="bento-card-label">System Status</div>
         <div class="status-list">
@@ -216,7 +211,6 @@
         </div>
       </div>
 
-      <!-- Stat mini cards -->
       <div class="glass-card stat-card">
         <div class="stat-num">C#</div>
         <div class="stat-label">Основной язык</div>
